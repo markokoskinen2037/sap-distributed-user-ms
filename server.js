@@ -13,6 +13,7 @@ db.once('open', () => console.log('connected to database'))
 app.use(express.json())
 
 // ROUTES:
+app.use("/", (req, res) => res.send("User microservice"))
 app.use("/users", userRouter)
 
 
