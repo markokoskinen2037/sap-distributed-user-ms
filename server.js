@@ -13,8 +13,12 @@ db.once('open', () => console.log('connected to database'))
 app.use(express.json())
 
 // ROUTES:
-app.use("/", (req, res) => res.send("User microservice"))
 app.use("/users", userRouter)
+
+
+
+// If no match, use this:
+app.use("/", (req, res) => res.send("User microservice"))
 
 
 app.listen(process.env.PORT || 3000, () => console.log('server started'))
