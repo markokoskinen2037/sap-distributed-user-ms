@@ -40,5 +40,5 @@ app.use("/users", userRouter)
 // If no match, use this:
 app.use("/", (req, res) => res.send("User microservice"))
 
-
-app.listen(process.env.PORT || 3000, () => console.log('server started'))
+const port = process.env.PORT || 3002
+app.listen(port, () => console.log('server started on port', port))
