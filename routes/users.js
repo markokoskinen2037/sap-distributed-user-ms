@@ -19,7 +19,17 @@ router.post('/register', async (req, res) => {
 
     try {
         const newUser = await user.save()
-        res.status(201).json(newUser)
+        const payload = { user: newUser };
+        const options = { expiresIn: '2d', issuer: 'sap-todo' };
+        const secret = process.env.JWT_SECRET;
+        const token = jwt.sign(payload, secret, options);
+
+        const response = {
+            token: token,
+            username: newUser.username
+        }
+
+        res.status(201).json(response)
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
