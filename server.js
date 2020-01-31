@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const userRouter = require("./routes/users")
-const logger = require('morgan');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 
@@ -25,9 +25,9 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.json())
 
-if (environment !== 'production') {
-    app.use(logger('dev'));
-}
+
+app.use(morgan('dev'));
+
 
 
 // ROUTES:
